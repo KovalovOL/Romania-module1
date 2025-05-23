@@ -41,14 +41,15 @@ safety_settings = [
     {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
 ]
 
-
 client = genai.GenerativeModel(
     model_name="gemini-2.0-flash",
     generation_config=generation_config,
     safety_settings=safety_settings
 )
 
+
 router = APIRouter()
+
 
 @router.get("/create_novel")
 async def create_novel(lang: str = "Eng"):
@@ -72,3 +73,4 @@ async def create_novel(lang: str = "Eng"):
     
     except Exception as e:
         return {"error": str(e)}
+        print(e)

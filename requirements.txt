@@ -1,0 +1,7 @@
+fastapi
+dotenv
+google
+pillow
+io
+pydantic
+uvicorn

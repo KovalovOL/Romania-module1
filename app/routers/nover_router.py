@@ -28,9 +28,9 @@ api_key = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=api_key)
 
 generation_config = {
-    "temperature": 0.9,
+    "temperature": 1,
     "top_p": 1,
-    "top_k": 32,
+    "top_k": 28,
     "max_output_tokens": 8192,
 }
 
@@ -62,7 +62,7 @@ async def create_novel(lang: str = "Eng"):
             response_data = json.loads(response.text)
         except json.JSONDecodeError:
             response_data = None
-            
+
         response_data["image"] = client.generate_image(
             prompt=get_image_promt(response_data['illustration']),
             size="1024x1024",

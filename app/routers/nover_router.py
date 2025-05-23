@@ -61,15 +61,8 @@ async def create_novel(lang: str = "Eng"):
         try:
             response_data = json.loads(response.text)
         except json.JSONDecodeError:
-            response_data = {
-                "text": response.text,
-                "emotion": "",
-                "question": "",
-                "answers": [],
-                "explanation": "",
-                "illustration": "A scene from the story: " + response.text[:100]
-            }
-        
+            response_data = None
+            
         response_data["image"] = client.generate_image(
             prompt=get_image_promt(response_data['illustration']),
             size="1024x1024",
